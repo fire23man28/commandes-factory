@@ -13,6 +13,7 @@ import com.example.commandes.model.CommandeNotFoundException;
 import com.example.commandes.model.StatutCommande;
 import com.example.commandes.repository.CommandeRepository;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -57,6 +58,18 @@ class CommandeServiceTest {
         when(repository.findById(1L)).thenReturn(Optional.of(commande));
 
         assertThrows(CommandeInvalideException.class, () -> service.expedier(1L));
+    }
+
+    @Test
+    void listerRenvoieToutesLesCommandes() {
+        when(repository.findAll()).thenReturn(List.of(
+                new Commande("Alice", new BigDecimal("120.50")),
+                new Commande("Bob", new BigDecimal("80.00"))));
+
+        List<CommandeDTO> dtos = service.lister();
+
+        assertEquals(2, dtos.size());
+        assertEquals("Bob", dtos.get(1).client());
     }
 
     @Test

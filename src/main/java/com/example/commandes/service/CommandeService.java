@@ -5,6 +5,7 @@ import com.example.commandes.dto.CommandeRequest;
 import com.example.commandes.model.Commande;
 import com.example.commandes.model.CommandeNotFoundException;
 import com.example.commandes.repository.CommandeRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,13 @@ public class CommandeService {
     public CommandeDTO creer(CommandeRequest request) {
         Commande commande = repository.save(new Commande(request.client(), request.montant()));
         return toDto(commande);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CommandeDTO> lister() {
+        return repository.findAll().stream()
+                .map(CommandeService::toDto)
+                .toList();
     }
 
     @Transactional(readOnly = true)

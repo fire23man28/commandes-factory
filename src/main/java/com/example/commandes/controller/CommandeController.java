@@ -5,6 +5,7 @@ import com.example.commandes.dto.CommandeRequest;
 import com.example.commandes.service.CommandeService;
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,11 @@ public class CommandeController {
 
     public CommandeController(CommandeService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public List<CommandeDTO> lister() {
+        return service.lister();
     }
 
     @PostMapping

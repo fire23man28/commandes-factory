@@ -48,6 +48,7 @@ mvn spring-boot:run
 | Méthode | Route | Effet |
 |---|---|---|
 | POST | `/api/commandes` | Crée une commande (statut `CREEE`) |
+| GET | `/api/commandes` | Liste toutes les commandes |
 | GET | `/api/commandes/{id}` | Lit une commande |
 | POST | `/api/commandes/{id}/expedition` | Passe en `EXPEDIEE` |
 | POST | `/api/commandes/{id}/annulation` | Passe en `ANNULEE` |

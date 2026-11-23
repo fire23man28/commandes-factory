@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: commandes-factory
+  datasource:
+    url: jdbc:postgresql://localhost:5432/commandes
+    username: commandes
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true

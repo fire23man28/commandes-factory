@@ -34,6 +34,7 @@ CREEE ──expédier──▶ EXPEDIEE
 - **CA3** : POST `/api/commandes/{id}/expedition` sur une commande `CREEE` renvoie `200 OK` avec le statut `EXPEDIEE`.
 - **CA4** : POST `/api/commandes/{id}/expedition` sur une commande `ANNULEE` renvoie `409 Conflict`.
 - **CA5** : GET `/api/commandes/{id}` sur un id inconnu renvoie `404 Not Found`.
+- **CA6** : GET `/api/commandes` renvoie `200 OK` avec la liste de toutes les commandes, liste vide incluse.
 
 ## Hors périmètre
 

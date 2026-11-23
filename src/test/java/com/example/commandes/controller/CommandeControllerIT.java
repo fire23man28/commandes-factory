@@ -50,6 +50,19 @@ class CommandeControllerIT {
     }
 
     @Test
+    void listerRenvoieLesCommandesCreees() throws Exception {
+        mvc.perform(post("/api/commandes")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"client\":\"Claire\",\"montant\":45.00}"))
+                .andExpect(status().isCreated());
+
+        mvc.perform(get("/api/commandes"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$[*].client").value(org.hamcrest.Matchers.hasItem("Claire")));
+    }
+
+    @Test
     void creerAvecClientVideRenvoieBadRequest() throws Exception {
         mvc.perform(post("/api/commandes")
                         .contentType(MediaType.APPLICATION_JSON)

@@ -64,3 +64,4 @@ curl -X POST localhost:8080/api/commandes \
 ## Ce qui n'est pas encore couvert
 
 Volontairement hors périmètre pour rester petit : Spring Security / JWT, Checkstyle, Sonar, hooks anti-secrets. Ce sont les prochaines étapes naturelles du projet, et chacune peut devenir un ticket dans la boucle décrite plus haut.
+
